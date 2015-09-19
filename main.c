@@ -4,9 +4,10 @@
 
 #define INFINITE_ROOTS -1
 
-double input(const char name[], double* val);
+int input(const char name[], double* val);
 int SolveSquare(double a, double b, double c, double *x1, double *x2);
 int output(int nRoots, double a, double b, double c, double x1, double x2);
+int equaltozero (double a);
 
 int main()
 {
@@ -33,20 +34,27 @@ int main()
     return 0;
 }
 
-double input(const char name[], double* val)
+int equaltozero (double a)
+{
+    if ((a < DBL_EPSILON) && (a > -DBL_EPSILON))
+        return (1);
+    else return (0);
+}
+
+int input(const char name[], double* val)
 {
     printf("enter %s>", name);
-    if (!scanf("%lg", val)) return 0;  //проверка, является ли введённое числом
+    if (!scanf("%lg", val)) return 0;
     else return 1;
 }
 
 int SolveSquare(double a, double b, double c, double *x1, double *x2)
 {
-    int nRoots = 3;  //переменная отвечает за число корней. по дефолту равна 3, чтобы в случае ошибки ввода увидеть её
-    double D = (b*b - 4*a*c);  //вычислям дискриминант
+    int nRoots = 3;
+    double D = (b*b - 4*a*c);
 
 
-    if (fabs(a) > DBL_EPSILON)  //проверяем, является ли уравнение квадратным
+    if (fabs(a) > DBL_EPSILON)
     {
         if (D > DBL_EPSILON)
         {
@@ -54,16 +62,16 @@ int SolveSquare(double a, double b, double c, double *x1, double *x2)
             *x2 = ((- sqrt(D) - b) / (2*a));
             nRoots = 2;
         }
-        if ((D < DBL_EPSILON) && (D > -DBL_EPSILON))
+        else if (equaltozero (D))
         {
             *x1 = ((-b) / 2*a);
             nRoots = 1;
         }
-        if (D < DBL_EPSILON) nRoots = 0;
+        else nRoots = 0;
     }
     else
     {
-        if (fabs(b) > DBL_EPSILON)  //тут решаем уже линейное уравнение
+        if (fabs(b) > DBL_EPSILON)
         {
             *x1 = -c / b;
             nRoots = 1;
