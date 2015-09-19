@@ -6,6 +6,23 @@
 int free_from_sqr (int a);
 int input(const char name[], int* val);
 
+int main()
+{
+    int N;
+    if (!input("N", &N))
+    {
+        printf("input error\n");
+        return (0);
+    }
+    else
+    {
+        if (free_from_sqr(N))
+            printf("There are full squares in decomposition of %d", N);
+        else printf("There are no full squares in decomposition of %d", N);
+        return (0);
+    }
+}
+
 int input(const char name[], int* val)
 {
     printf("enter %s> ", name);
@@ -33,13 +50,4 @@ int free_from_sqr (int a)
     return(marker);
 }
 
-int main()
-{
-    int N;
-    if (!input("N", &N))
-        printf("input error");
-    if (free_from_sqr(N))
-        printf("YES");
-    else printf("NO");
-    return 0;
-}
+

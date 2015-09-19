@@ -32,8 +32,8 @@ int main()
     if (!input("N", &N))
         printf("input error");
     if (recursia_weight(N))
-        printf("YES");
-    else printf("NO");
+        printf("It's possible to weight %d", N);
+    else printf("It's impossible to weight %d", N);
     return(0);
 
 }
