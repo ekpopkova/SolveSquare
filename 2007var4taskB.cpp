@@ -12,6 +12,7 @@ int filtrsymbol (int symb);
 int main()
 {
     int c=0, mem=0;
+    printf("Enter your text here:\n");
     while ((c=getchar())!=EOF)
     {
         if (((mem==' ') || (mem=='\t')) && ((c==' ') || (c=='\t')))
