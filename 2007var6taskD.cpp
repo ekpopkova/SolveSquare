@@ -16,6 +16,8 @@ int main()
         printf("INPUT ERROR\n");
         return 0;
     }
+    
+// FIXME: Please, don't write lines longer that 80 characters. Thay are awful.
     else
     {
         FillArray (MemArr, N);
@@ -49,10 +51,12 @@ int decompositions (int n, int k, int MemArr[], int arrsize)
 
 void FillArray (int MemArr[], int arrsize)
 {
-    for (int x=0; x<=arrsize; x++)
+// FIXME: Please, put whitespaces between ariphmetical operations
+    for (int x=0; x<=arrsize; x++) // FIXME: <= arraysize? really?
         for (int y=0; y<=arrsize; y++)
         {
             if ((x==0) && (y==0))
+            // FIMXE: Always check bounds when working with arrays!
                 MemArr[x+y*(arrsize+1)]=1;
             else if (x==0)
                 MemArr[x+y*(arrsize+1)]=0;
