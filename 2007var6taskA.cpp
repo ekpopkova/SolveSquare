@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 const int MAXSIZE = 50;
-
+// FIXME: why lowercase and swapping? Function is an action - then Swap
 void swaping (int *a, int *b);
 void PrintArray (int Array[][MAXSIZE], int Xsize, int Ysize);
 void MirrowArray (int Array[][MAXSIZE], int Xsize, int Ysize);
@@ -36,6 +36,7 @@ int main()
 
 void swaping (int *a, int *b)
 {
+// FIXME: Always check pointers. Somehow a or b may be NULL.
     int t;
     t = *a;
     *a = *b;
@@ -56,6 +57,7 @@ void PrintArray (int Array[][MAXSIZE], int Xsize, int Ysize)
 
 void MirrowArray (int Array[][MAXSIZE], int Xsize, int Ysize)
 {
+// FIXME: add assert checks for array bounds. It's hard to maintain indicies corectness
     for (int x = 0; x < Xsize; x++)
         for (int y = 0; y < (Ysize/2); y++)
             swaping(&Array[y][x], &Array[Ysize-y-1][x]);
@@ -78,7 +80,7 @@ int InputArray (const char name[], int Array[][MAXSIZE], int Xsize, int Ysize)
     for (int y = 0; y < Ysize; y++)
         for (int x = 0; x < Xsize; x++)
         {
-            marker = (marker + scanf("%d", &Array[y][x]))/2;
+            marker = (marker + scanf("%d", &Array[y][x]))/2; // FIXME: Whaaat?
         }
     return marker;
 }
